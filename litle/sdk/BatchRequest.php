@@ -152,6 +152,14 @@ class BatchRequest
         $choice_hash = array($hash_out['card'], $hash_out['paypal'], $hash_out['token'], $hash_out['paypage']);
         $choice2_hash = array($hash_out['fraudCheck'], $hash_out['cardholderAuthentication']);
 
+        if (isset($hash_in['customerId'])) {
+            $hash_out['customerId'] = $hash_in['customerId'];
+        }
+
+        if (isset($hash_in['id'])) {
+            $hash_out['id'] = $hash_in['id'];
+        }
+
         $this->addTransaction($hash_out, $hash_in, 'sale', $choice_hash, $choice2_hash);
         $this->counts_and_amounts['sale']['count'] += 1;
         $this->counts_and_amounts['sale']['amount'] += $hash_out['amount'];

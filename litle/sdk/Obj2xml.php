@@ -86,10 +86,12 @@ class Obj2xml
 
         if (!empty($data['customerId'])) {
             $transac->addAttribute('customerId', $data['customerId']);
+            unset($data['customerId']);
         }
 
         if (!empty($data['id'])) {
             $transac->addAttribute('id', $data['id']);
+            unset($data['id']);
         }
 
         Obj2xml::iterateChildren($data, $transac);
