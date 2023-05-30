@@ -83,6 +83,15 @@ class Obj2xml
         if (Obj2xml::transactionShouldHaveReportGroup($type)) {
             $transac->addAttribute('reportGroup', $report_group);
         }
+
+        if (!empty($data['customerId'])) {
+            $transac->addAttribute('customerId', $data['customerId']);
+        }
+
+        if (!empty($data['id'])) {
+            $transac->addAttribute('id', $data['id']);
+        }
+
         Obj2xml::iterateChildren($data, $transac);
 
         return str_replace("<?xml version=\"1.0\"?>\n", "", $transac->asXML());
